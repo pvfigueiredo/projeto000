@@ -1,5 +1,12 @@
 ﻿################################################################################
+<<<<<<< HEAD
 # Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
 ################################################################################
 
 /Webservice/.vs/Webservice/FileContentIndex
+=======
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Webservice/.vs
+>>>>>>> main
