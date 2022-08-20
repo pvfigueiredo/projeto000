@@ -9,7 +9,7 @@ namespace Webservice.Model
     {
         public int ClienteID { get; set; }
         public string Nome { get; set; }
-        public string SobreNome { get; set; }
+        public string Sobrenome { get; set; }
         public string CPF { get; set; }
         public DateTime DataNascimento { get; set; }
     }
