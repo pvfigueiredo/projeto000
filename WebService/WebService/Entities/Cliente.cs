@@ -4,7 +4,6 @@ namespace Webservice.Entities
 {
     public class Cliente
     {
-
         public Guid ClienteId { get; init; }
         public string? Nome { get; init; }
         public string? Sobrenome { get; init; }
