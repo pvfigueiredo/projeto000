@@ -50,5 +50,17 @@ namespace Webservice.Controllers
             return Ok(cliente);
             
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult DeleteCliente(Guid id)
+        {
+            if (_clienteRepository.DeleteCliente(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
+
+        }
     }
 }

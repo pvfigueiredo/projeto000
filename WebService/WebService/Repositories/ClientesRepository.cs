@@ -47,5 +47,15 @@ namespace Webservice.Repositories
             };
             return cliente;
         }
+
+        public bool DeleteCliente(Guid id)
+        {
+            var cliente = _clientes.Where(c => id == c.ClienteId).FirstOrDefault();
+            if(cliente == null)
+            {
+                return false;
+            }
+            return _clientes.Remove(cliente);
+        }
     }
 }
