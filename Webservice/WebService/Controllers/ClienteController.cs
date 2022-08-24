@@ -52,10 +52,11 @@ namespace Webservice.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult PutCliente(Guid id)
+        public ActionResult PutCliente(Guid id, Cliente? request)
         {
             //Pode ser substituido por "var cliente" a declaração "Cliente cliente" para evitar redundância
-            Cliente cliente = _clienteRepository.GetCliente(id);
+            var cliente = _clienteRepository.GetCliente(id);
+            //
             //Deve modificar o cliente encontrado, por isso deve receber um cliente ao invés da Guid
             return Ok(cliente);
         }

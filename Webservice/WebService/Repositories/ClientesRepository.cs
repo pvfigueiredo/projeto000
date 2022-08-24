@@ -45,7 +45,10 @@ namespace Webservice.Repositories
                 Nome = request.Nome, 
                 Sobrenome = request.Sobrenome
             };
+            _clientes.Add(cliente);
             return cliente;
         }
+        // criar update / chamar o get e chamar o save
+        //outra opcao
     }
 }
