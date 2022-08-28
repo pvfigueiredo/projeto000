@@ -4,7 +4,7 @@ using Webservice.Entities;
 
 namespace Webservice.Repositories
 {
-    public class ClientesRepository
+    public class ClientesRepository : IClientesRepository
     {
         private List<Cliente> _clientes;
 
@@ -23,39 +23,45 @@ namespace Webservice.Repositories
         {
             return _clientes;
         }
-        public Cliente? GetCliente(Guid id)
+        public Cliente GetCliente(Guid id)
         {
-            if (id == Guid.Empty)
+            var cliente = _clientes.FirstOrDefault(c => id == c.ClienteId);
+            if (cliente is null)
             {
                 return new Cliente();
             }
-            var cliente = _clientes.Where(c => id == c.ClienteId).FirstOrDefault();
-
             return cliente;
         }
 
         public Cliente SaveCliente(Cliente request)
         {
-            var cliente = new Cliente() 
+            var cliente = new Cliente()
             {
-                ClienteId = Guid.NewGuid(), 
-                CPF = request.CPF, 
-                DataNascimento = request.DataNascimento, 
-                Email = request.Email, 
-                Nome = request.Nome, 
+                ClienteId = Guid.NewGuid(),
+                CPF = request.CPF,
+                DataNascimento = request.DataNascimento,
+                Email = request.Email,
+                Nome = request.Nome,
                 Sobrenome = request.Sobrenome
             };
+            _clientes.Add(cliente);
             return cliente;
         }
 
         public bool DeleteCliente(Guid id)
         {
             var cliente = _clientes.Where(c => id == c.ClienteId).FirstOrDefault();
-            if(cliente == null)
+            if (cliente == null)
             {
                 return false;
             }
             return _clientes.Remove(cliente);
+        }
+
+        public void UpdateCliente(Cliente cliente)
+        {
+            var index = _clientes.FindIndex(c => c.ClienteId == cliente.ClienteId);
+            _clientes[index] = cliente;
         }
     }
 }

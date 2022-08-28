@@ -52,3 +52,7 @@ D:\Projetos\WebService\WebService\obj\Debug\net6.0\refint\WebService.dll
 D:\Projetos\WebService\WebService\obj\Debug\net6.0\WebService.pdb
 D:\Projetos\WebService\WebService\obj\Debug\net6.0\WebService.genruntimeconfig.cache
 D:\Projetos\WebService\WebService\obj\Debug\net6.0\ref\WebService.dll
+D:\Projetos\WebService\WebService\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Projetos\WebService\WebService\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Projetos\WebService\WebService\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Projetos\WebService\WebService\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
