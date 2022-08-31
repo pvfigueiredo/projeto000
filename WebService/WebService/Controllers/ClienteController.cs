@@ -25,15 +25,15 @@ namespace Webservice.Controllers
         {
             return clienteRepository.GetClientes();
         }
-        
+
         // GET /clientes/{id}
         [HttpGet]
         [Route("{id}")]
         public ActionResult<Cliente> GetCliente(Guid id)
         {
             var cliente = clienteRepository.GetCliente(id);
-            
-            if(cliente == null)
+
+            if (cliente == null)
             {
                 return NotFound();
             }
@@ -45,14 +45,14 @@ namespace Webservice.Controllers
         [HttpPost]
         public ActionResult PostCliente(Cliente request)
         {
-            if(request == null)
+            if (request == null)
             {
                 return BadRequest();
             }
-            var cliente = new Cliente() { ClienteId = Guid.NewGuid(),Nome = request.Nome,Sobrenome = request.Sobrenome,CPF = request.CPF,DataNascimento = request.DataNascimento,Email = request.Email };
-            clienteRepository.SaveCliente(cliente);            
+            var cliente = new Cliente() { ClienteId = Guid.NewGuid(), Nome = request.Nome, Sobrenome = request.Sobrenome, CPF = request.CPF, DataNascimento = request.DataNascimento, Email = request.Email };
+            clienteRepository.SaveCliente(cliente);
             return Ok(cliente);
-            
+
         }
 
         // DELETE /clientes/{id}
@@ -72,12 +72,21 @@ namespace Webservice.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateCliente(Guid id, Cliente request)
         {
-            var cliente = GetCliente(id);
-            if(cliente is null)
+            var cliente = clienteRepository.GetCliente(id);
+            if (cliente is null)
             {
                 return NotFound();
             }
-            clienteRepository.UpdateCliente(request);
+            cliente = new Cliente { ClienteId = id, Nome = request.Nome, Sobrenome = request.Sobrenome, CPF = request.CPF, DataNascimento = request.DataNascimento, Email = request.Email };
+            try
+            {
+                clienteRepository.UpdateCliente(cliente);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
             return NoContent();
         }
 
@@ -86,12 +95,20 @@ namespace Webservice.Controllers
         public ActionResult<Cliente> PatchCliente(Guid id, JsonPatchDocument<Cliente> jsonPatch)
         {
             var cliente = clienteRepository.GetCliente(id);
-            if(cliente is null)
+            if (cliente is null)
             {
                 return NotFound();
             }
             jsonPatch.ApplyTo(cliente, ModelState);
-            clienteRepository.UpdateCliente(cliente);
+            try
+            {
+                clienteRepository.UpdateCliente(cliente);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
             return Ok(cliente);
         }
     }

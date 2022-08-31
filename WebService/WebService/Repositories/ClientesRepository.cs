@@ -23,13 +23,9 @@ namespace Webservice.Repositories
         {
             return _clientes;
         }
-        public Cliente GetCliente(Guid id)
+        public Cliente? GetCliente(Guid id)
         {
             var cliente = _clientes.FirstOrDefault(c => id == c.ClienteId);
-            if (cliente is null)
-            {
-                return new Cliente();
-            }
             return cliente;
         }
 
@@ -61,7 +57,12 @@ namespace Webservice.Repositories
         public void UpdateCliente(Cliente cliente)
         {
             var index = _clientes.FindIndex(c => c.ClienteId == cliente.ClienteId);
+            if (index == -1)
+            {
+                throw new Exception("Cliente não encontrado!");
+            }
             _clientes[index] = cliente;
         }
+
     }
 }
