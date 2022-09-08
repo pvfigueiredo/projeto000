@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Webservice.Entities
+namespace WebService.Entities
 {
     public class Cliente
     {

@@ -1,29 +1,35 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using Webservice.Entities;
-using Webservice.Repositories;
+using WebService.DTO;
+using WebService.Entities;
+using WebService.Repositories;
 
-namespace Webservice.Controllers
+namespace WebService.Controllers
 {
     [ApiController]
     [Route("clientes")]
     public class ClienteController : ControllerBase
     {
-        private IClientesRepository clienteRepository;
-        public ClienteController(IClientesRepository clienteRepository)
+        private readonly IRepository clienteRepository;
+        private readonly IMapper mapper;
+
+        public ClienteController(IRepository clienteRepository, IMapper mapper)
         {
             this.clienteRepository = clienteRepository;
+            this.mapper = mapper;
         }
 
         // GET /clientes/
         [HttpGet]
-        public IEnumerable<Cliente> GetClientes()
+        public ActionResult GetClientes()
         {
-            return clienteRepository.GetClientes();
+            var clientes = clienteRepository.GetClientes();
+            return Ok(mapper.Map<IEnumerable<ClienteDTO>>(clientes));
         }
         
         // GET /clientes/{id}
@@ -38,7 +44,7 @@ namespace Webservice.Controllers
                 return NotFound();
             }
 
-            return Ok(cliente);
+            return Ok(mapper.Map<ClienteDTO>(cliente));
         }
 
         // POST /clientes/
@@ -60,11 +66,15 @@ namespace Webservice.Controllers
         [Route("{id}")]
         public ActionResult DeleteCliente(Guid id)
         {
-            if (clienteRepository.DeleteCliente(id))
+            try
             {
+                clienteRepository.DeleteCliente(id);
                 return Ok();
             }
-            return BadRequest();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
 

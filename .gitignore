@@ -4,3 +4,8 @@
 
 /Webservice/.vs
 /WebService/WebService/bin
+/WebService/WebService/obj
+/WebService/WebService/Migrations
+/WebService/WebService/WebService.db
+/WebService/WebService/WebService.db-shm
+/WebService/WebService/WebService.db-wal

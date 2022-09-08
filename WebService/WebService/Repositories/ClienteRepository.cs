@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
-using Webservice.Entities;
+using WebService.Entities;
 
-namespace Webservice.Repositories
+namespace WebService.Repositories
 {
-    public class ClientesRepository : IClientesRepository
+    public class ClienteRepository : IRepository
     {
         private List<Cliente> _clientes;
 
-        public ClientesRepository()
+        public ClienteRepository()
         {
             _clientes = new()
             {
@@ -23,13 +23,9 @@ namespace Webservice.Repositories
         {
             return _clientes;
         }
-        public Cliente GetCliente(Guid id)
+        public Cliente? GetCliente(Guid id)
         {
             var cliente = _clientes.FirstOrDefault(c => id == c.ClienteId);
-            if (cliente is null)
-            {
-                return new Cliente();
-            }
             return cliente;
         }
 
@@ -48,14 +44,14 @@ namespace Webservice.Repositories
             return cliente;
         }
 
-        public bool DeleteCliente(Guid id)
+        public void DeleteCliente(Guid id)
         {
             var cliente = _clientes.Where(c => id == c.ClienteId).FirstOrDefault();
-            if (cliente == null)
+            if (cliente is null)
             {
-                return false;
+                throw new Exception("Cliente não encontrado!");
             }
-            return _clientes.Remove(cliente);
+            _clientes.Remove(cliente);
         }
 
         public void UpdateCliente(Cliente cliente)
