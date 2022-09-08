@@ -48,7 +48,5 @@ namespace Webservice.Repositories
             _clientes.Add(cliente);
             return cliente;
         }
-        // criar update / chamar o get e chamar o save
-        //outra opcao
     }
 }

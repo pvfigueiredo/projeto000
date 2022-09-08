@@ -10,7 +10,7 @@ using WebService.Entities;
 namespace WebService.Controllers
 {
     [ApiController]
-    [Route("clientes")]
+    [Route("user")]
     public class UserController
     {
         UserRepository _userRepository;
