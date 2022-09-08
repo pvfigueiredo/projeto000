@@ -4,7 +4,7 @@ using Webservice.Entities;
 
 namespace Webservice.Repositories
 {
-    public class ClientesRepository
+    public class ClientesRepository : IClientesRepository
     {
         private List<Cliente> _clientes;
 
@@ -25,28 +25,44 @@ namespace Webservice.Repositories
         }
         public Cliente? GetCliente(Guid id)
         {
-            if (id == Guid.Empty)
-            {
-                return new Cliente();
-            }
-            var cliente = _clientes.Where(c => id == c.ClienteId).FirstOrDefault();
-
+            var cliente = _clientes.FirstOrDefault(c => id == c.ClienteId);
             return cliente;
         }
 
         public Cliente SaveCliente(Cliente request)
         {
-            var cliente = new Cliente() 
+            var cliente = new Cliente()
             {
-                ClienteId = Guid.NewGuid(), 
-                CPF = request.CPF, 
-                DataNascimento = request.DataNascimento, 
-                Email = request.Email, 
-                Nome = request.Nome, 
+                ClienteId = Guid.NewGuid(),
+                CPF = request.CPF,
+                DataNascimento = request.DataNascimento,
+                Email = request.Email,
+                Nome = request.Nome,
                 Sobrenome = request.Sobrenome
             };
             _clientes.Add(cliente);
             return cliente;
         }
+
+        public bool DeleteCliente(Guid id)
+        {
+            var cliente = _clientes.Where(c => id == c.ClienteId).FirstOrDefault();
+            if (cliente == null)
+            {
+                return false;
+            }
+            return _clientes.Remove(cliente);
+        }
+
+        public void UpdateCliente(Cliente cliente)
+        {
+            var index = _clientes.FindIndex(c => c.ClienteId == cliente.ClienteId);
+            if (index == -1)
+            {
+                throw new Exception("Cliente não encontrado!");
+            }
+            _clientes[index] = cliente;
+        }
+
     }
 }
