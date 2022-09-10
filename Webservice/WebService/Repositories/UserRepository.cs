@@ -13,7 +13,7 @@ namespace Webservice.Repositories
         {
             _users = new()
             {
-                new User(Guid.Parse("7a775e1a-3344-4eb3-a04b-cec9a0452af8"), "Paulo", "paulo@email.com", "Paulo", "123"),
+                new User(Guid.Parse("7a775e1a-3344-4eb3-a04b-cec9a0452238"), "Paulo", "paulo@email.com", "Paulo", "123"),
                 new User(Guid.Parse("7a775e1a-3344-4eb3-a04b-cec9a0746867"), "Arthur", "arthur@email.com", "arthur", "123"),
                 new User(Guid.Parse("7a775e1a-3344-4eb3-a04b-cec9a0238759"), "Amanda", "amanda@email.com", "amanda", "123"),
                 new User(Guid.Parse("7a775e1a-3344-4eb3-a04b-cec9a0175390"), "Steffania", "steffania@email.com", "steffania", "123"),
@@ -48,7 +48,26 @@ namespace Webservice.Repositories
             _users.Add(user);
             return user;
         }
-        // criar update / chamar o get e chamar o save
-        //outra opcao
+
+        public bool DeleteUser(Guid id)
+        {
+            var user = _users.Where(u => id == u.UserId).FirstOrDefault();
+            if (user == null)
+            {
+                return false;
+            }
+            return _users.Remove(user);
+        }
+
+        public void UpdateUser(User user)
+        {
+            var index = _users.FindIndex(u => u.UserId == user.UserId);
+            if (index == -1)
+            {
+                throw new Exception("Usuário não encontrado!");
+            }
+            _users[index] = user;
+        }
+
     }
 }

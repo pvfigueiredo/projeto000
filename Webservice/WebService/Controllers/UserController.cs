@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +12,25 @@ namespace WebService.Controllers
 {
     [ApiController]
     [Route("user")]
-    public class UserController
+    public class UserController : ControllerBase
     {
-        UserRepository _userRepository;
-        public UserController()
+        private IUserRepository userRepository;
+        public UserController(IUserRepository userRepository)
         {
-            _userRepository = new UserRepository();
+            this.userRepository = userRepository;
         }
 
         [HttpGet]
         public IEnumerable<User> GetUser()
         {
-            return _userRepository.GetUser();
+            return userRepository.GetUser();
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Cliente> GetCliente(Guid id)
+        public ActionResult<User> GetCliente(Guid id)
         {
-            var user = _userRepository.GetUser(id);
+            var user = userRepository.GetUser(id);
 
             if (user == null)
             {
@@ -39,11 +40,6 @@ namespace WebService.Controllers
             return Ok(user);
         }
 
-        private ActionResult<Cliente> NotFound()
-        {
-            throw new NotImplementedException();
-        }
-
         [HttpPost]
         public ActionResult PostUser(User request)
         {
@@ -51,20 +47,64 @@ namespace WebService.Controllers
             {
                 return BadRequest();
             }
-            var user = new User() { UserId = Guid.NewGuid(), Nome = request.Nome,Email = request.Email, UserName = request.UserName, Senha = request.Senha };
-            _userRepository.SaveUser(user);
+            var user = new User() { UserId = Guid.NewGuid(), Nome = request.Nome, Email = request.Email, UserName = request.UserName, Senha = request.Senha };
+            userRepository.SaveUser(user);
             return Ok(user);
 
         }
 
-        private ActionResult BadRequest()
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult DeleteUser(Guid id)
         {
-            throw new NotImplementedException();
+            if (userRepository.DeleteUser(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
+
         }
 
-        private ActionResult Ok(User user)
+        [HttpPut("{id}")]
+        public ActionResult UpdateUser(Guid id, User request)
         {
-            throw new NotImplementedException();
+            var user = userRepository.GetUser(id);
+            if (user is null)
+            {
+                return NotFound();
+            }
+            user = new User { UserId = id, Nome = request.Nome, Email = request.Email, UserName = request.UserName, Senha = request.Senha };
+            try
+            {
+                userRepository.UpdateUser(user);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        [HttpPatch]
+        public ActionResult<User> PatchUser(Guid id, JsonPatchDocument<User> jsonPatch)
+        {
+            var user = userRepository.GetUser(id);
+            if (user is null)
+            {
+                return NotFound();
+            }
+            jsonPatch.ApplyTo(user, ModelState);
+            try
+            {
+                userRepository.UpdateUser(user);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return NotFound();
+            }
+            return Ok(user);
         }
     }
 }
