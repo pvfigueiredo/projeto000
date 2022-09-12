@@ -25,7 +25,6 @@ C:\Users\amand\source\repos\projeto000\WebService\WebService\obj\Debug\net6.0\re
 C:\Users\amand\source\repos\projeto000\WebService\WebService\obj\Debug\net6.0\WebService.pdb
 C:\Users\amand\source\repos\projeto000\WebService\WebService\obj\Debug\net6.0\WebService.genruntimeconfig.cache
 C:\Users\amand\source\repos\projeto000\WebService\WebService\obj\Debug\net6.0\ref\WebService.dll
-D:\Projetos\WebService\WebService\bin\Debug\net6.0\appsettings.Development.json
 D:\Projetos\WebService\WebService\bin\Debug\net6.0\appsettings.json
 D:\Projetos\WebService\WebService\bin\Debug\net6.0\WebService.exe
 D:\Projetos\WebService\WebService\bin\Debug\net6.0\WebService.deps.json
