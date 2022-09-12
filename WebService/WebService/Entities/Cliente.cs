@@ -2,9 +2,9 @@
 
 namespace WebService.Entities
 {
-    public class Cliente
+    public class Cliente : IEntity
     {
-        public Guid ClienteId { get; init; }
+        public Guid Id { get; init; }
         public string? Nome { get; init; }
         public string? Sobrenome { get; init; }
         public string? CPF { get; init; }
@@ -14,7 +14,7 @@ namespace WebService.Entities
         public Cliente() { }
         public Cliente (Guid clienteId, string nome, string sobrenome, string CPF, DateTime dataNascimento, string email)
         {
-            this.ClienteId = clienteId;
+            this.Id = clienteId;
             this.Nome = nome;
             this.Sobrenome = sobrenome;
             this.CPF = CPF;

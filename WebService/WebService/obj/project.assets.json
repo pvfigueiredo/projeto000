@@ -2662,7 +2662,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amand\\.nuget\\packages\\": {},
+    "C:\\Users\\pv_fi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -2671,14 +2671,14 @@
       "projectUniqueName": "D:\\Projetos\\WebService\\WebService\\WebService.csproj",
       "projectName": "WebService",
       "projectPath": "D:\\Projetos\\WebService\\WebService\\WebService.csproj",
-      "packagesPath": "C:\\Users\\amand\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\pv_fi\\.nuget\\packages\\",
       "outputPath": "D:\\Projetos\\WebService\\WebService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\amand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pv_fi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

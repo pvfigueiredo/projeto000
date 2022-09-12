@@ -7,7 +7,7 @@ namespace WebService.DTO
 {
     public class ClienteDTO 
     {
-        public Guid ClienteId { get; init; }
+        public Guid Id { get; init; }
         public string? NomeCompleto { get; init; }
         public string? CPF { get; init; }
         public int Idade { get; init; }

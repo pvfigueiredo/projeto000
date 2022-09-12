@@ -17,7 +17,7 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //Registrando uma instância singleton para ClienteRepository
-builder.Services.AddScoped<IRepository,Repository>();
+builder.Services.AddScoped<IRepository,ClienteRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

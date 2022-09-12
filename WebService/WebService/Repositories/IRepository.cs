@@ -4,10 +4,10 @@ namespace WebService.Repositories
 {
     public interface IRepository
     {
-        void DeleteCliente(Guid id);
-        Cliente? GetCliente(Guid id);
-        List<Cliente>? GetClientes();
-        Cliente? SaveCliente(Cliente request);
-        void UpdateCliente(Cliente cliente);
+        void Add(IEntity entity);
+        void Delete(IEntity entity);
+        void Update(IEntity entity);
+        IEntity Get(Guid id);
+        IEnumerable<IEntity> GetAll();
     }
 }
