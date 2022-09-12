@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using Webservice.Entities;
-using Webservice.Repositories;
 using WebService.Entities;
+using Webservice.Repositories;
 
 namespace WebService.Controllers
 {
