@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using Webservice.Entities;
-using Webservice.Repositories;
 using WebService.Entities;
+using Webservice.Repositories;
 
 namespace WebService.Controllers
 {
@@ -51,7 +50,7 @@ namespace WebService.Controllers
             {
                 return BadRequest();
             }
-            var user = new User() { UserId = Guid.NewGuid(), Nome = request.Nome,Email = request.Email, UserName = request.UserName, Senha = request.Senha };
+            var user = new User() { Id = Guid.NewGuid(), Nome = request.Nome,Email = request.Email, UserName = request.UserName, Senha = request.Senha };
             _userRepository.SaveUser(user);
             return Ok(user);
 

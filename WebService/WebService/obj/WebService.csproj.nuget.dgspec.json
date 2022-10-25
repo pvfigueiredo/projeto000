@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Meus Projetos\\Cadastro de clientes\\projeto000\\Webservice\\WebService\\WebService.csproj": {}
+    "D:\\Projetos\\WebService\\WebService\\WebService.csproj": {}
   },
   "projects": {
-    "D:\\Meus Projetos\\Cadastro de clientes\\projeto000\\Webservice\\WebService\\WebService.csproj": {
+    "D:\\Projetos\\WebService\\WebService\\WebService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Meus Projetos\\Cadastro de clientes\\projeto000\\Webservice\\WebService\\WebService.csproj",
+        "projectUniqueName": "D:\\Projetos\\WebService\\WebService\\WebService.csproj",
         "projectName": "WebService",
-        "projectPath": "D:\\Meus Projetos\\Cadastro de clientes\\projeto000\\Webservice\\WebService\\WebService.csproj",
-        "packagesPath": "C:\\Users\\Arthur\\.nuget\\packages\\",
-        "outputPath": "D:\\Meus Projetos\\Cadastro de clientes\\projeto000\\Webservice\\WebService\\obj\\",
+        "projectPath": "D:\\Projetos\\WebService\\WebService\\WebService.csproj",
+        "packagesPath": "C:\\Users\\pv_fi\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos\\WebService\\WebService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Arthur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pv_fi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,14 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-<<<<<<<< HEAD:WebService/WebService/obj/WebService.csproj.nuget.dgspec.json
-========
-<<<<<<<< HEAD:Webservice/WebService/obj/WebService.csproj.nuget.dgspec.json
-            "Swashbuckle.AspNetCore": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[6.2.3, )"
-========
->>>>>>>> #008_Arthur:Webservice/WebService/obj/WebService.csproj.nuget.dgspec.json
+              "version": "[11.0.0, )"
+            },
             "Microsoft.AspNetCore.JsonPatch": {
               "target": "Package",
               "version": "[6.0.8, )"
@@ -60,13 +56,19 @@
               "target": "Package",
               "version": "[6.0.8, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
-<<<<<<<< HEAD:WebService/WebService/obj/WebService.csproj.nuget.dgspec.json
-========
->>>>>>>> main:WebService/WebService/obj/WebService.csproj.nuget.dgspec.json
->>>>>>>> #008_Arthur:Webservice/WebService/obj/WebService.csproj.nuget.dgspec.json
             }
           },
           "imports": [
@@ -75,7 +77,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -87,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

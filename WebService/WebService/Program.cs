@@ -1,13 +1,23 @@
-using Webservice.Repositories;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using WebService.Data;
+using WebService.Repositories;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<SmartContext>(
+        options => options.UseSqlite(builder.Configuration.GetConnectionString("Default"))
+    );
 builder.Services.AddControllers().AddNewtonsoftJson();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 //Registrando uma instância singleton para ClienteRepository
-builder.Services.AddSingleton<IClientesRepository, ClientesRepository>();
+builder.Services.AddScoped<IRepository, ClienteRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
-using Webservice.Entities;
 using WebService.Entities;
+using WebService.Repositories;
 
 namespace Webservice.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IRepository
     {
         private List<User> _users;
 
@@ -20,6 +20,26 @@ namespace Webservice.Repositories
             };
         }
 
+        public void Add(IEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(IEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEntity Get(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<IEntity> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<User> GetUser()
         {
             return _users;
@@ -30,7 +50,7 @@ namespace Webservice.Repositories
             {
                 return new User();
             }
-            var user = _users.Where(u => id == u.UserId).FirstOrDefault();
+            var user = _users.Where(u => id == u.Id).FirstOrDefault();
 
             return user;
         }
@@ -39,7 +59,7 @@ namespace Webservice.Repositories
         {
             var user = new User()
             {
-                UserId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Nome = request.Nome,
                 Email = request.Email,
                 UserName = request.UserName,
@@ -47,6 +67,11 @@ namespace Webservice.Repositories
             };
             _users.Add(user);
             return user;
+        }
+
+        public void Update(IEntity entity)
+        {
+            throw new NotImplementedException();
         }
         // criar update / chamar o get e chamar o save
         //outra opcao
