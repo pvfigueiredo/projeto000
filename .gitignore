@@ -222,3 +222,12 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+Webservice/.vs/Webservice/v17/.suo
+Webservice/WebService/obj/Debug/net6.0/refint/WebService.dll
+WebService/WebService/bin/Debug/net6.0/WebService.dll
+WebService/WebService/obj/staticwebassets.pack.sentinel
+WebService/WebService/obj/Debug/net6.0/WebService.assets.cache
+WebService/WebService/obj/Debug/net6.0/WebService.csproj.FileListAbsolute.txt
+Webservice/WebService/obj/Debug/net6.0/WebService.dll
+WebService/WebService/obj/Debug/net6.0/WebService.pdb
+
