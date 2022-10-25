@@ -50,7 +50,7 @@ namespace Webservice.Repositories
             {
                 return new User();
             }
-            var user = _users.Where(u => id == u.UserId).FirstOrDefault();
+            var user = _users.Where(u => id == u.Id).FirstOrDefault();
 
             return user;
         }
@@ -59,7 +59,7 @@ namespace Webservice.Repositories
         {
             var user = new User()
             {
-                UserId = Guid.NewGuid(),
+                Id = Guid.NewGuid(),
                 Nome = request.Nome,
                 Email = request.Email,
                 UserName = request.UserName,

@@ -1,8 +1,8 @@
 ﻿namespace WebService.Entities
 {
-    public class User
+    public class User : IEntity
     {
-        public Guid UserId { get; init; }
+        public Guid Id { get; init; }
         public string? Nome { get; init; }
         public string? Email { get; init; }
         public string? UserName { get; init; }
@@ -11,7 +11,7 @@
         public User() { }
         public User(Guid userId, string nome, string email, string userName, string senha)
         {
-            this.UserId = userId;
+            this.Id = userId;
             this.Nome = nome;
             this.Email = email;
             this.UserName = userName;
